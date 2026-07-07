@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="https://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
+
+    <title>Olá, mundo!</title>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></link>
+</head>
+
+<body>
+
+<div class="container">
+    <table class="table" id="tabela">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Nome</td>
+            <td>Sigla</td>
+            <td>Ação</td>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="estado: ${listaEstados}">
+            <td th:text="${estado.id}"></td>
+            <td th:text="${estado.nome}"></td>
+            <td th:text="${estado.sigla}"></td>
+            <td colspan="2">
+                <a th:href="@{/editarEstado/{id}(id=${estado.id})}">Editar</a>
+                <a th:href="@{/removerEstado/{id}(id=${estado.id})}">Remover</a>
+            </td>
+
+        </tr>
+        </tbody>
+        <a class="btn btn-danger" href="/administrativo"><i class="fa-solid fa-share"></i> Voltar </a>
+        <a class="btn btn-primary" href="/cadastroEstado"><i class="fa-solid fa-plus"></i> Cadastrar </a>
+
+    </table>
+
+</body>
+
+</html>
