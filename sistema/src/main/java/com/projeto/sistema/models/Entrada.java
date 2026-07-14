@@ -16,7 +16,9 @@ public class Entrada implements Serializable {
     private Double valorTotal = 0.00;
     private Double quantidadeTotal = 0.00;
     private Date dataEntrada = new Date();
+    @ManyToOne
     private Fornecedor fornecer;
+    @ManyToOne
     private Funcionario funcionario;
 
     public Long getId() {
