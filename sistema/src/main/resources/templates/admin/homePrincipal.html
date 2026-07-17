@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="https://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Klein Store</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="/">
+        <i class="fa-solid fa-store"></i>
+        Klein Store
+    </a>
+
+    <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#menu">
+
+        <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Produtos</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Categorias</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contato</a>
+            </li>
+        </ul>
+
+        <a href="/admin" class="btn btn-outline-light">
+            <i class="fa-solid fa-user-lock"></i>
+            Entrar
+        </a>
+    </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid bg-dark text-white mb-0">
+
+    <div class="container text-center">
+
+        <h1 class="display-4">
+            Bem-vindo à Klein Store
+        </h1>
+
+        <p class="lead">
+            Os melhores produtos com qualidade,
+            preço justo e entrega rápida.
+        </p>
+
+        <a href="#produtos" class="btn btn-success btn-lg">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Comprar Agora
+        </a>
+    </div>
+</div>
+
+<div class="container mt-5" id="produtos">
+
+    <h2 class="text-center mb-4">
+        Produtos em Destaque
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm mb-4">
+
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQvhJBc42U0kUhM8MCyTWO5b1GS-ZBFL6-xPzqDXvOKHYWZatH23R2Nkqu&s=10" class="card-img-top">
+
+                <div class="card-body">
+
+                    <h5>Lote de jogos</h5>
+
+                    <p>
+                        Diversos Jogos Disponiveis
+                    </p>
+
+                    <h4 class="text-success">
+                        R$ 99,90
+                    </h4>
+
+                    <button class="btn btn-dark btn-block">
+                        Comprar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm mb-4">
+
+                <img src="https://cdn1.bazaraki.com/media/cache1/12/de/12decacec589d34b6b8b5a2b72ce4779.webp"
+                     class="card-img-top">
+
+                <div class="card-body">
+
+                    <h5>Lote de jogos</h5>
+
+                    <p>
+                        Diversos Jogos Disponiveis
+                    </p>
+
+                    <h4 class="text-success">
+                        R$ 149,90
+                    </h4>
+
+                    <button class="btn btn-dark btn-block">
+                        Comprar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm mb-4">
+
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5DdBPWvWbcZVs1PTgWG3kemkWXLkMr-FF9dAtd6yJiBoXkWCZDh8H7qc&s=10"
+                     class="card-img-top">
+
+                <div class="card-body">
+
+                    <h5>Lote de jogos</h5>
+
+                    <p>
+                        Diversos Jogos Disponiveis
+                    </p>
+
+                    <h4 class="text-success">
+                        R$ 199,90
+                    </h4>
+
+                    <button class="btn btn-dark btn-block">
+                        Comprar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+
+    <div class="row text-center">
+
+        <div class="col-md-4">
+
+            <i class="fa-solid fa-truck fa-3x text-primary mb-3"></i>
+
+            <h4>Entrega Rápida</h4>
+
+            <p>Enviamos para todo o Brasil.</p>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <i class="fa-solid fa-shield-halved fa-3x text-success mb-3"></i>
+
+            <h4>Compra Segura</h4>
+
+            <p>Seus dados protegidos.</p>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <i class="fa-solid fa-headset fa-3x text-warning mb-3"></i>
+
+            <h4>Suporte</h4>
+
+            <p>Atendimento rápido.</p>
+
+        </div>
+    </div>
+</div>
+
+
+<footer class="bg-dark text-white mt-5 py-4">
+
+    <div class="container text-center">
+
+        <h5 class="font-weight-bold mb-3">
+            <i class="fas fa-store"></i> Klein Store
+        </h5>
+
+        <p class="mb-2">
+            Sua loja de jogos e acessórios.
+        </p>
+
+        <a href="https://www.instagram.com/kleinstorefp/"
+           target="_blank"
+           class="text-white"
+           style="font-size: 1.2rem; text-decoration: none;">
+
+            <i class="fab fa-instagram"></i>
+            @kleinstorefp
+        </a>
+
+        <hr class="bg-light">
+
+        <small>
+            © 2026 Klein Store - Todos os direitos reservados.
+        </small>
+
+    </div>
+
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
