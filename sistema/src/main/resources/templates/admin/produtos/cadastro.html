@@ -12,68 +12,127 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/05/Logo-Lobo-PNG.png" width="30" height="30" class="d-inline-block align-top" alt="">
-
-    <a class="navbar-brand" href="/admin">Klein Store</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/admin">Home <span class="sr-only">(página atual)</span></a>
-            </li>
-
-
-
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
-        </form>
-    </div>
+<nav class="navbar top navbar-expand-lg navbar-dark bg-dark" >
+    <a class="navbar-brand font-weight-bold" href="/admin">
+        <i class="fas fa-store"></i> Klein Store</a>
+    <form class="form-inline ml-auto">
+        <input class="form-control mr-2 pesquisa" placeholder="Pesquisar">
+        <button class="btn btn-light"><i class="fas fa-search"></i></button>
+    </form>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid mt-4">
 
     <form action="/salvarProduto" th:object="${produto}" method="POST">
-        <div class="form-group">
 
-            <label for="id">ID:</label>
-            <input type="text" readonly="true" class="form-control" id="id" th:field="*{id}">
+        <div class="card shadow-sm">
 
-            <label >Nome Produto:</label>
-            <input type="text" class="form-control" th:field="*{nome}">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">
+                    <i class="fa-solid fa-box"></i> Cadastro de Produto
+                </h5>
+            </div>
 
-            <label>codigoBarras:</label>
-            <input type="text" class="form-control" th:field="*{codigoBarras}">
+            <div class="card-body">
 
-            <label >Unidade de Medida :</label>
-            <input type="text" class="form-control" th:field="*{unidadeMedida}">
+                <div class="row">
 
-            <label >Estoque:</label>
-            <input type="number" class="form-control" th:field="*{estoque}">
+                    <div class="col-md-2 mb-3">
+                        <label>ID</label>
+                        <input type="text"
+                               class="form-control"
+                               readonly
+                               th:field="*{id}">
+                    </div>
 
-            <label >precoCusto:</label>
-            <input type="number" class="form-control"  th:field="*{precoCusto}">
+                    <div class="col-md-10 mb-3">
+                        <label>Nome do Produto</label>
+                        <input type="text"
+                               class="form-control"
+                               th:field="*{nome}">
+                    </div>
 
-            <label >precoVenda:</label>
-            <input type="number" class="form-control" th:field="*{precoVenda}">
+                    <div class="col-md-4 mb-3">
+                        <label>Código de Barras</label>
+                        <input type="text"
+                               class="form-control"
+                               th:field="*{codigoBarras}">
+                    </div>
 
-            <label >lucro:</label>
-            <input type="number" class="form-control"  th:field="*{lucro}">
+                    <div class="col-md-4 mb-3">
+                        <label>Unidade de Medida</label>
+                        <input type="text"
+                               class="form-control"
+                               th:field="*{unidadeMedida}">
+                    </div>
 
-            <label >margemLucro:</label>
-            <input type="number" class="form-control"  th:field="*{margemLucro}">
+                    <div class="col-md-4 mb-3">
+                        <label>Estoque</label>
+                        <input type="number"
+                               class="form-control"
+                               th:field="*{estoque}">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Preço de Custo</label>
+                        <input type="number"
+                               class="form-control"
+                               step="0.01"
+                               th:field="*{precoCusto}">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Preço de Venda</label>
+                        <input type="number"
+                               class="form-control"
+                               step="0.01"
+                               th:field="*{precoVenda}">
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <label>Lucro</label>
+                        <input type="number"
+                               class="form-control"
+                               step="0.01"
+                               th:field="*{lucro}">
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <label>Margem (%)</label>
+                        <input type="number"
+                               class="form-control"
+                               step="0.01"
+                               th:field="*{margemLucro}">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-footer d-flex justify-content-between">
+
+                <div>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa-solid fa-floppy-disk"></i> Salvar
+                    </button>
+                </div>
+
+                <div>
+
+                    <a href="/admin" class="btn btn-secondary">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
+                    </a>
+
+                    <a href="/listarProduto" class="btn btn-primary">
+                        <i class="fa-solid fa-list"></i> Listar
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
-
-        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
-        <a class="btn btn-danger" href="/admin"><i class="fa-solid fa-share"></i> Voltar </a>
-        <a class="btn btn-success" href="/listarProduto"><i class="fa-solid fa-list"></i> Listar </a>
     </form>
 
 </div>

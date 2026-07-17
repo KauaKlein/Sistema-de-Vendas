@@ -17,7 +17,7 @@ public class Entrada implements Serializable {
     private Double quantidadeTotal = 0.00;
     private Date dataEntrada = new Date();
     @ManyToOne
-    private Fornecedor fornecer;
+    private Fornecedor fornecedor;
     @ManyToOne
     private Funcionario funcionario;
 
@@ -61,12 +61,12 @@ public class Entrada implements Serializable {
         this.dataEntrada = dataEntrada;
     }
 
-    public Fornecedor getFornecer() {
-        return fornecer;
+    public Fornecedor getFornecedor() {
+        return fornecedor;
     }
 
     public void setFornecer(Fornecedor fornecer) {
-        this.fornecer = fornecer;
+        this.fornecedor = fornecer;
     }
 
     public Funcionario getFuncionario() {

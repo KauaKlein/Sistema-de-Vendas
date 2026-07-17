@@ -12,55 +12,95 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/05/Logo-Lobo-PNG.png" width="30" height="30" class="d-inline-block align-top" alt="">
-
-    <a class="navbar-brand" href="/admin">Klein Store</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/admin">Home <span class="sr-only">(página atual)</span></a>
-            </li>
-
-
-
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
-        </form>
-    </div>
+<nav class="navbar top navbar-expand-lg navbar-dark bg-dark" >
+    <a class="navbar-brand font-weight-bold" href="/admin">
+        <i class="fas fa-store"></i> Klein Store</a>
+    <form class="form-inline ml-auto">
+        <input class="form-control mr-2 pesquisa" placeholder="Pesquisar">
+        <button class="btn btn-light"><i class="fas fa-search"></i></button>
+    </form>
 </nav>
 
-<div class="container">
+<div class="container mt-4">
 
-    <form action="/salvarCidade" th:object="${cidade}" method="POST">
-        <div class="form-group">
+    <div class="row justify-content-center">
 
-            <label for="id">ID:</label>
-            <input type="text" readonly="true" class="form-control" id="id" th:field="*{id}">
+        <div class="col-lg-6 col-md-8">
 
-            <label >Nome Cidade:</label>
-            <input type="text" class="form-control" th:field="*{nome}">
+            <form action="/salvarCidade" th:object="${cidade}" method="POST">
 
-            <label>Cep:</label>
-            <input type="text" class="form-control" id="cep" th:field="*{cep}">
+                <div class="card shadow-sm">
 
-            <label>Estado:</label>
-           <select th:field="*{estado}" class="form-control">
-               <option th:each="est : ${listaEstados}" th:value="${est.id}" th:text="${est.nome}" ></option>
-           </select>
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">
+                            <i class="fa-solid fa-city"></i> Cadastro de Cidade
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text"
+                                   class="form-control"
+                                   readonly
+                                   th:field="*{id}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nome da Cidade</label>
+                            <input type="text"
+                                   class="form-control"
+                                   th:field="*{nome}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>CEP</label>
+                            <input type="text"
+                                   id="cep"
+                                   class="form-control"
+                                   th:field="*{cep}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <select th:field="*{estado}" class="form-control">
+                                <option th:each="est : ${listaEstados}"
+                                        th:value="${est.id}"
+                                        th:text="${est.nome}">
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="card-footer d-flex justify-content-between">
+
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa-solid fa-floppy-disk"></i> Salvar
+                        </button>
+
+                        <div>
+
+                            <a href="/admin" class="btn btn-secondary">
+                                <i class="fa-solid fa-arrow-left"></i> Voltar
+                            </a>
+
+                            <a href="/listarCidade" class="btn btn-primary">
+                                <i class="fa-solid fa-list"></i> Listar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
         </div>
 
-
-        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
-        <a class="btn btn-danger" href="/admin"><i class="fa-solid fa-share"></i> Voltar </a>
-        <a class="btn btn-success" href="/listarCidade"><i class="fa-solid fa-list"></i> Listar </a>
-    </form>
+    </div>
 
 </div>
 

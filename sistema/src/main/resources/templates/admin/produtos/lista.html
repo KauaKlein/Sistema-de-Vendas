@@ -15,73 +15,100 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/05/Logo-Lobo-PNG.png" width="30" height="30" class="d-inline-block align-top" alt="">
-
-    <a class="navbar-brand" href="/admin">Klein Store</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/admin">Home <span class="sr-only">(página atual)</span></a>
-            </li>
-
-
-
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
-        </form>
-    </div>
+<nav class="navbar top navbar-expand-lg navbar-dark bg-dark" >
+    <a class="navbar-brand font-weight-bold" href="/admin">
+        <i class="fas fa-store"></i> Klein Store</a>
+    <form class="form-inline ml-auto">
+        <input class="form-control mr-2 pesquisa" placeholder="Pesquisar">
+        <button class="btn btn-light"><i class="fas fa-search"></i></button>
+    </form>
 </nav>
 
+<div class="container-fluid mt-4">
 
+    <div class="card shadow-sm">
 
-<div class="container">
-    <table class="table" id="tabela">
-        <thead>
-        <tr>
-            <td>ID</td>
-            <td>Nome</td>
-            <td>codigoBarras</td>
-            <td>unidadeMedida</td>
-            <td>estoque</td>
-            <td>precoCusto</td>
-            <td>precoVenda</td>
-            <td>lucro</td>
-            <td>margemLucro</td>
-            <td>Ação</td>
-        </tr>
-        </thead>
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                <i class="fa-solid fa-box"></i> Lista de Produtos
+            </h5>
+            
+        </div>
 
-        <tbody>
-        <tr th:each="produto: ${listaProdutos}">
-            <td th:text="${produto.id}"></td>
-            <td th:text="${produto.nome}"></td>
-            <td th:text="${produto.codigoBarras}"></td>
-            <td th:text="${produto.unidadeMedida}"></td>
-            <td th:text="${produto.estoque}"></td>
-            <td th:text="${produto.precoCusto}"></td>
-            <td th:text="${produto.precoVenda}"></td>
-            <td th:text="${produto.lucro}"></td>
-            <td th:text="${produto.margemLucro}"></td>
-            <td colspan="2">
-                <a th:href="@{/editarProduto/{id}(id=${produto.id})}"><i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a>
-                <a th:href="@{/removerProduto/{id}(id=${produto.id})}"><i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
-            </td>
+        <div class="card-body">
 
+            <div class="table-responsive">
 
-        </tr>
-        </tbody>
+                <table class="table table-hover table-striped" id="tabela">
 
-    </table>
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Produto</th>
+                        <th>Código de Barras</th>
+                        <th>Unidade</th>
+                        <th>Estoque</th>
+                        <th>Custo</th>
+                        <th>Venda</th>
+                        <th>Lucro</th>
+                        <th>Margem (%)</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                    </thead>
 
-    <a class="btn btn-danger" href="/admin"><i class="fa-solid fa-share"></i> Voltar </a>
-    <a class="btn btn-primary" href="/cadastroProduto"><i class="fa-solid fa-plus"></i> Cadastrar </a>
+                    <tbody>
+
+                    <tr th:each="produto : ${listaProdutos}">
+
+                        <td th:text="${produto.id}"></td>
+                        <td th:text="${produto.nome}"></td>
+                        <td th:text="${produto.codigoBarras}"></td>
+                        <td th:text="${produto.unidadeMedida}"></td>
+                        <td th:text="${produto.estoque}"></td>
+                        <td th:text="${produto.precoCusto}"></td>
+                        <td th:text="${produto.precoVenda}"></td>
+                        <td th:text="${produto.lucro}"></td>
+                        <td th:text="${produto.margemLucro}"></td>
+
+                        <td class="text-center">
+
+                            <a th:href="@{/editarProduto/{id}(id=${produto.id})}"
+                               class="btn btn-warning btn-sm"
+                               title="Editar">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+
+                            <a th:href="@{/removerProduto/{id}(id=${produto.id})}"
+                               class="btn btn-danger btn-sm"
+                               title="Excluir">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="card-footer d-flex justify-content-between">
+
+            <a href="/admin" class="btn btn-secondary">
+                <i class="fa-solid fa-arrow-left"></i> Voltar
+            </a>
+
+            <a href="/cadastroProduto" class="btn btn-success">
+                <i class="fa-solid fa-plus"></i> Cadastrar Produto
+            </a>
+
+        </div>
+
+    </div>
 
 </div>
 

@@ -15,61 +15,100 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/05/Logo-Lobo-PNG.png" width="30" height="30" class="d-inline-block align-top" alt="">
-
-    <a class="navbar-brand" href="/admin">Klein Store</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/admin">Home <span class="sr-only">(página atual)</span></a>
-            </li>
-
-
-
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
-        </form>
-    </div>
+<nav class="navbar top navbar-expand-lg navbar-dark bg-dark" >
+    <a class="navbar-brand font-weight-bold" href="/admin">
+        <i class="fas fa-store"></i> Klein Store</a>
+    <form class="form-inline ml-auto">
+        <input class="form-control mr-2 pesquisa" placeholder="Pesquisar">
+        <button class="btn btn-light"><i class="fas fa-search"></i></button>
+    </form>
 </nav>
 
+<div class="container mt-4">
 
+    <div class="row justify-content-center">
 
-<div class="container">
-    <table class="table" id="tabela">
-        <thead>
-        <tr>
-            <td>ID</td>
-            <td>Nome</td>
-            <td>Sigla</td>
-            <td>Ação</td>
-        </tr>
-        </thead>
+        <div class="col-lg-8">
 
-        <tbody>
-        <tr th:each="estado: ${listaEstados}">
-            <td th:text="${estado.id}"></td>
-            <td th:text="${estado.nome}"></td>
-            <td th:text="${estado.sigla}"></td>
-            <td colspan="2">
-                <a th:href="@{/editarEstado/{id}(id=${estado.id})}"><i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a>
-                <a th:href="@{/removerEstado/{id}(id=${estado.id})}"><i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
-            </td>
+            <div class="card shadow-sm">
 
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
 
-        </tr>
-        </tbody>
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-map"></i> Lista de Estados
+                    </h5>
+                </div>
 
-    </table>
+                <div class="card-body">
 
-    <a class="btn btn-danger" href="/admin"><i class="fa-solid fa-share"></i> Voltar </a>
-    <a class="btn btn-primary" href="/cadastroEstado"><i class="fa-solid fa-plus"></i> Cadastrar </a>
+                    <div class="table-responsive">
+
+                        <table class="table table-hover table-striped" id="tabela">
+
+                            <thead class="thead-dark">
+                            <tr>
+                                <th class="text-center" style="width: 80px;">ID</th>
+                                <th>Nome</th>
+                                <th class="text-center" style="width: 100px;">Sigla</th>
+                                <th class="text-center" style="width: 140px;">Ações</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <tr th:each="estado : ${listaEstados}">
+
+                                <td class="text-center"
+                                    th:text="${estado.id}"></td>
+
+                                <td th:text="${estado.nome}"></td>
+
+                                <td class="text-center"
+                                    th:text="${estado.sigla}"></td>
+
+                                <td class="text-center">
+
+                                    <a th:href="@{/editarEstado/{id}(id=${estado.id})}"
+                                       class="btn btn-warning btn-sm"
+                                       title="Editar">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+
+                                    <a th:href="@{/removerEstado/{id}(id=${estado.id})}"
+                                       class="btn btn-danger btn-sm"
+                                       title="Excluir">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div class="card-footer d-flex justify-content-between">
+
+                    <a href="/admin" class="btn btn-secondary">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
+                    </a>
+
+                    <a href="/cadastroEstado" class="btn btn-success">
+                        <i class="fa-solid fa-plus"></i> Cadastrar Estado
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 

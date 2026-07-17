@@ -15,71 +15,101 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/05/Logo-Lobo-PNG.png" width="30" height="30" class="d-inline-block align-top" alt="">
-
-    <a class="navbar-brand" href="/admin">Klein Store</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/admin">Home <span class="sr-only">(página atual)</span></a>
-            </li>
-
-
-
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
-        </form>
-    </div>
+<nav class="navbar top navbar-expand-lg navbar-dark bg-dark" >
+    <a class="navbar-brand font-weight-bold" href="/admin">
+        <i class="fas fa-store"></i> Klein Store</a>
+    <form class="form-inline ml-auto">
+        <input class="form-control mr-2 pesquisa" placeholder="Pesquisar">
+        <button class="btn btn-light"><i class="fas fa-search"></i></button>
+    </form>
 </nav>
 
+<div class="container-fluid mt-4">
 
+    <div class="card shadow-sm">
 
-<div class="container-fluid">
-    <table class="table" id="tabela">
-        <thead>
-        <tr>
-            <td>ID</td>
-            <td>Nome</td>
-            <td>Cnpj</td>
-            <td>Telefone</td>
-            <td>Endereco</td>
-            <td>Numero</td>
-            <td>Bairro</td>
-            <td>Email</td>
-            <td>Ação</td>
-        </tr>
-        </thead>
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
 
-        <tbody>
-        <tr th:each="fornecedor: ${listaFornecedores}">
-            <td th:text="${fornecedor.id}"></td>
-            <td th:text="${fornecedor.nome}"></td>
-            <td th:text="${fornecedor.cnpj}"></td>
-            <td th:text="${fornecedor.telefone}"></td>
-            <td th:text="${fornecedor.numero}"></td>
-            <td th:text="${fornecedor.bairro}"></td>
-            <td th:text="${fornecedor.email}"></td>
-            <td th:text="${fornecedor.endereco}"></td>
-            <td colspan="2">
-                <a th:href="@{/editarFornecedor/{id}(id=${fornecedor.id})}"><i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a>
-                <a th:href="@{/removerFornecedor/{id}(id=${fornecedor.id})}"><i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
-            </td>
+            <h5 class="mb-0">
+                <i class="fa-solid fa-truck"></i> Lista de Fornecedores
+            </h5>
+        </div>
 
+        <div class="card-body">
 
-        </tr>
-        </tbody>
+            <div class="table-responsive">
 
-    </table>
+                <table class="table table-hover table-striped" id="tabela">
 
-    <a class="btn btn-danger" href="/admin"><i class="fa-solid fa-share"></i> Voltar </a>
-    <a class="btn btn-primary" href="/cadastroFornecedor"><i class="fa-solid fa-plus"></i> Cadastrar </a>
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CNPJ</th>
+                        <th>Telefone</th>
+                        <th>Endereço</th>
+                        <th>Número</th>
+                        <th>Bairro</th>
+                        <th>E-mail</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
+                    <tr th:each="fornecedor : ${listaFornecedores}">
+
+                        <td th:text="${fornecedor.id}"></td>
+                        <td th:text="${fornecedor.nome}"></td>
+                        <td th:text="${fornecedor.cnpj}"></td>
+                        <td th:text="${fornecedor.telefone}"></td>
+
+                        <!-- Corrigido -->
+                        <td th:text="${fornecedor.endereco}"></td>
+                        <td th:text="${fornecedor.numero}"></td>
+
+                        <td th:text="${fornecedor.bairro}"></td>
+                        <td th:text="${fornecedor.email}"></td>
+
+                        <td class="text-center">
+
+                            <a th:href="@{/editarFornecedor/{id}(id=${fornecedor.id})}"
+                               class="btn btn-warning btn-sm"
+                               title="Editar">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+
+                            <a th:href="@{/removerFornecedor/{id}(id=${fornecedor.id})}"
+                               class="btn btn-danger btn-sm"
+                               title="Excluir">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="card-footer d-flex justify-content-between">
+
+            <a href="/admin" class="btn btn-secondary">
+                <i class="fa-solid fa-arrow-left"></i> Voltar
+            </a>
+
+            <a href="/cadastroFornecedor" class="btn btn-success">
+                <i class="fa-solid fa-plus"></i> Cadastrar Fornecedor
+            </a>
+
+        </div>
+
+    </div>
 
 </div>
 
